@@ -40,7 +40,7 @@ module.exports = function generateTaskContent(browser) {
     const generalStylesFilesToConcatinate = [
         `${stylesFolderPath}/fonts.${preprocExtensions}`,
         `${stylesFolderPath}/vars.${preprocExtensions}`,
-        `${stylesFolderPath}/GUI.${preprocExtensions}`,
+        `${stylesFolderPath}/utilites.${preprocExtensions}`,
         `${stylesFolderPath}/common.${preprocExtensions}`,
         `${stylesFolderPath}/plugins/**/*.${preprocExtensions}`,
         `${stylesFolderPath}/plugins/**/*.css`,
