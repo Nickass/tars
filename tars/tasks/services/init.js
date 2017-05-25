@@ -8,7 +8,7 @@ const githubConfig = {
     user: 'Nickass',
     repoPrefix: 'tars-'
 };
-
+console.log('hello', '\n\n\n\n\n\n\n\n');
 /**
  * Make url to download TARS parts
  * @param  {String} type    Type of the generated link
