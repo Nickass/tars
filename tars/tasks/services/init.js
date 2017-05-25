@@ -5,7 +5,7 @@ const gutil = tars.packages.gutil;
 const del = tars.packages.del;
 
 const githubConfig = {
-    user: 'Nickass',
+    user: 'tars',
     repoPrefix: 'tars-'
 };
 console.log('hello', '\n\n\n\n\n\n\n\n');
