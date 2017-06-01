@@ -34,11 +34,11 @@ const builtInPugHelpers = {
 
         pathToSymbolsSprite += `#${iconName}`;
 
-        const className = options.className || `icon__${iconName}`;
+        const className = options.className || '';
         const iconWidth = options.iconWidth || iconData.width;
         const iconHeight = options.iconHeight || iconData.height;
         return `
-            <svg class="${className}" width="${iconWidth}" height="${iconHeight}">
+            <svg "svgic--${iconName} ${className}" width="${iconWidth}" height="${iconHeight}">
                 <use xlink:href="${pathToSymbolsSprite}"></use>
             </svg>
         `;

@@ -215,11 +215,11 @@ const builtInHandlebarsHelpers = {
 
         pathToSymbolsSprite += '#' + iconName;
 
-        const className = options.hash.className || 'icon__' + iconName;
+        const className = options.hash.className || '';
         const iconWidth = options.hash.iconWidth || iconData.width;
         const iconHeight = options.hash.iconHeight || iconData.height;
         const content = `
-            <svg class="${className}" width="${iconWidth}" height="${iconHeight}">
+            <svg class="svgic--${iconName} ${className}" width="${iconWidth}" height="${iconHeight}">
                 <use xlink:href="${pathToSymbolsSprite}"></use>
             </svg>
         `;
