@@ -31,7 +31,7 @@ function tarsRequire(packageName) {
             console.dir('Please, write to the tars.builder@gmail.com, if update did not help you.', { colors: true });
             console.log('---------------------------------------------------------------------------------\n');
 
-            throw new Error(`Package ${packageName} is not available.`);
+            new Error(`Package ${packageName} is not available.`);
         }
     }
 
