@@ -108,6 +108,13 @@ module.exports = {
     },
 
     /**
+     * Which package managers will be injecting dependencies
+     * Example: ['bower', 'npm'] or false
+     * @type {Array}
+     */
+    injectDependencies: ['bower'],
+    
+    /**
      * Write sourcemaps
      * @type {Object}
      *
@@ -135,7 +142,7 @@ module.exports = {
          * Do you need to use notify?
          * @type {Boolean}
          */
-        useNotify: true,
+        useNotify: false,
 
         /**
          * Title for notifier
@@ -226,7 +233,7 @@ module.exports = {
      * Available 'pug', 'jade' and 'handlebars'
      * @type {String}
      */
-    templater: 'handlebars',
+    templater: 'pug',
 
     /**
      * Css-preprocessor
