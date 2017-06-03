@@ -181,7 +181,9 @@ tars.packages = {
     gulpif: tars.require('gulp-if'),
     gutil: gutil,
     importify: tars.require('gulp-importify'),
-    if: tars.require('gulp-if'),
+    inject: tars.require('gulp-inject'),
+    mainBowerFiles: tars.require('gulp-main-bower-files'),
+    mainNpmFiles: tars.require('gulp-main-npm-files'),
     notify: tars.require('gulp-notify'),
     plumber: tars.require('gulp-plumber'),
     postcss: tars.require('gulp-postcss'),
@@ -189,6 +191,7 @@ tars.packages = {
     replace: tars.require('gulp-replace-task'),
     resolveDep: tars.require('gulp-resolve-dep'),
     runSequence: tars.require('run-sequence'),
+    series: tars.require('stream-series'),
     sourcemaps: tars.require('gulp-sourcemaps'),
     streamCombiner: tars.require('stream-combiner'),
     through2: tars.require('through2')

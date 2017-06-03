@@ -4,7 +4,7 @@ const gulp = tars.packages.gulp;
 const plumber = tars.packages.plumber;
 const notifier = tars.helpers.notifier;
 const resolveDep = tars.packages.resolveDep;
-const ifi = tars.packages.if;
+const gulpif = tars.packages.gulpif;
 /**
  * Copy files from dev to build directory. Create build directory with new build version
  */
@@ -21,7 +21,7 @@ module.exports = () => {
                     notifier.error('An error occurred while running create-build task.', error);
                 }
             }))
-            .pipe(ifi('*.html', resolveDep(pathsDir)))
+            .pipe(gulpif('*.html', resolveDep(pathsDir)))
             .pipe(gulp.dest(tars.options.build.path))
             .pipe(
                 notifier.success('Pre-build task is finished')
