@@ -5,6 +5,7 @@ const cache = tars.packages.cache;
 const changed = tars.packages.changed;
 const plumber = tars.packages.plumber;
 const notifier = tars.helpers.notifier;
+const rename = tars.packages.rename;
 
 const imagesPath = `${tars.config.fs.staticFolderName}/${tars.config.fs.imagesFolderName}`;
 
@@ -15,7 +16,8 @@ module.exports = () => {
     return gulp.task('images:raster-svg', done => {
 
         if (tars.config.svg.active && tars.config.svg.workflow === 'sprite' && (tars.flags.ie8 || tars.flags.ie)) {
-            return gulp.src(`./markup/${imagesPath}/svg/*.svg`)
+            return gulp.src([`./markup/${imagesPath}/svg/*.svg`,
+                `./markup/${tars.config.fs.componentsFolderName}/**/sprite/*.svg`])
                 .pipe(plumber({
                     errorHandler(error) {
                         notifier.error('An error occurred while rastering svg.', error);
@@ -32,6 +34,16 @@ module.exports = () => {
                     )
                 )
                 .pipe(tars.require('gulp-svg2png')())
+                .pipe(rename(fPath=>{
+                    if(!tars.config.prefixComponentSprite) return fPath;
+
+                    if(fPath.dirname === '.') return fPath;
+                    
+                    fPath.basename = tars.config.prefixComponentSprite + fPath.basename;
+                    fPath.dirname = '.';
+
+                    return fPath;
+                }))
                 .pipe(gulp.dest(`./dev/${imagesPath}/rastered-svg-images`))
                 .pipe(
                     notifier.success('SVG\'ve been rastered')

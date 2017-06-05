@@ -4,6 +4,7 @@ const gulp = tars.packages.gulp;
 const changed = tars.packages.changed;
 const plumber = tars.packages.plumber;
 const notifier = tars.helpers.notifier;
+const rename = tars.packages.rename;
 
 const svgImagesPath = `${tars.config.fs.staticFolderName}/${tars.config.fs.imagesFolderName}`;
 
@@ -14,7 +15,8 @@ module.exports = () => {
     return gulp.task('images:minify-svg', done => {
 
         if (tars.config.svg.active) {
-            return gulp.src(`./markup/${svgImagesPath}/svg/*.svg`)
+            return gulp.src([`./markup/${svgImagesPath}/svg/*.svg`,
+                `./markup/${tars.config.fs.componentsFolderName}/**/sprite/*.svg`])
                 .pipe(plumber({
                     errorHandler(error) {
                         notifier.error('An error occurred while minifying svg.', error);
@@ -27,6 +29,15 @@ module.exports = () => {
                         extension: '.svg'
                     }
                 ))
+                .pipe(rename(fPath=>{
+                    if(!tars.config.prefixComponentSprite) return fPath;
+
+                    if(fPath.dirname === '.') return fPath;
+                    
+                    fPath.basename = tars.config.prefixComponentSprite + fPath.basename;
+                    fPath.dirname = '.';                    
+                    return fPath;
+                }))
                 .pipe(tars.require('gulp-imagemin')(
                     {
                         svgoPlugins: [

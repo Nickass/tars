@@ -293,7 +293,14 @@ module.exports = {
          * @type {String}
          */
         componentsFolderName: 'components'
-    }
+    },
+
+    /**
+     * The prefix that is added to the image name of the sprite component.
+     * false by default
+     * @type {String}
+     */
+    prefixComponentSprite: 'l-'
 
     ////////////////////////////////////////////////////
     ////////////////////////////////////////////////////

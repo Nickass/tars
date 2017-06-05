@@ -5,7 +5,8 @@
  */
 module.exports = () => {
     return tars.packages.chokidar.watch(
-        `markup/${tars.config.fs.staticFolderName}/${tars.config.fs.imagesFolderName}/sprite/**/*.png`,
+        [`markup/${tars.config.fs.staticFolderName}/${tars.config.fs.imagesFolderName}/sprite/**/*.png`,
+        `markup/${tars.config.fs.componentsFolderName}/**/sprite/**/*.png`],
         tars.options.watch
     ).on('all', (event, watchedPath) => {
         tars.helpers.watcherLog(event, watchedPath);

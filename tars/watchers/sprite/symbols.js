@@ -11,7 +11,8 @@ module.exports = () => {
     if (tars.config.svg.active && tars.config.svg.workflow === 'symbols') {
 
         return tars.packages.chokidar.watch(
-            `markup/${tars.config.fs.staticFolderName}/${tars.config.fs.imagesFolderName}/svg/**/*.svg`,
+            [`markup/${tars.config.fs.staticFolderName}/${tars.config.fs.imagesFolderName}/svg/**/*.svg`,
+            `markup/${tars.config.fs.componentsFolderName}/**/sprite/**/*.svg`],
             tars.options.watch
         ).on('all', (event, watchedPath) => {
             tars.helpers.watcherLog(event, watchedPath);
