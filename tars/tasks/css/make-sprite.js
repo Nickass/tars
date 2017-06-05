@@ -4,6 +4,7 @@ const gulp = tars.packages.gulp;
 const plumber = tars.packages.plumber;
 const notifier = tars.helpers.notifier;
 const stringHelper = tars.helpers.stringHelper;
+const rename = tars.packages.rename;
 
 const staticFolderName = tars.config.fs.staticFolderName;
 const imagesFolderName = tars.config.fs.imagesFolderName;
@@ -44,11 +45,21 @@ module.exports = () => {
 
         for (let i = 0; i < dpiLength; i++) {
             spriteData.push(
-                gulp.src(`./markup/${staticFolderName}/${imagesFolderName}/sprite/${usedDpiArray[i]}dpi/*.png`)
+                gulp.src([`./markup/${staticFolderName}/${imagesFolderName}/sprite/${usedDpiArray[i]}dpi/*.png`,
+                    `./markup/${tars.config.fs.componentsFolderName}/**/sprite/${usedDpiArray[i]}dpi/*.png`])
                 .pipe(plumber({
                     errorHandler(error) {
                         notifier.error(errorText, error);
                     }
+                }))
+                .pipe(rename(fPath=>{
+                    if(!tars.config.prefixComponentSprite) return fPath;
+
+                    if(fPath.dirname === '.') return fPath;
+                    
+                    fPath.basename = tars.config.prefixComponentSprite + fPath.basename;
+                    fPath.dirname = '.';                    
+                    return fPath;
                 }))
                 .pipe(
                     tars.require('gulp.spritesmith')(
