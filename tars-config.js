@@ -296,7 +296,7 @@ module.exports = {
     },
 
     /**
-     * The prefix that is added to the image name of the sprite component.
+     * The prefix that is added to the image name of the global sprite.
      * false by default
      * @type {String}
      */
