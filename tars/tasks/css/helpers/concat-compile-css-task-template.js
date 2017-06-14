@@ -48,6 +48,9 @@ module.exports = function generateTaskContent(browser) {
         `${stylesFolderPath}/utilites.${preprocExtensions}`,
         `./markup/${tars.config.fs.componentsFolderName}/**/*.${preprocExtensions}`,
         `./markup/${tars.config.fs.componentsFolderName}/**/*.css`
+        `./markup/${tars.config.fs.componentsFolderName}/**/ui/**/*.${preprocExtensions}`,
+        `./markup/${tars.config.fs.componentsFolderName}/**/widgets/**/*.${preprocExtensions}`,
+        `./markup/${tars.config.fs.componentsFolderName}/**/layouts/**/*.${preprocExtensions}`
     ];
     const lastStylesFilesToConcatinate = [
         `${stylesFolderPath}/etc/**/*.${preprocExtensions}`,

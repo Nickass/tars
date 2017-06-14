@@ -300,7 +300,7 @@ module.exports = {
      * false by default
      * @type {String}
      */
-    prefixComponentSprite: 'l-'
+    prefixGlobalSprite: 'g-'
 
     ////////////////////////////////////////////////////
     ////////////////////////////////////////////////////

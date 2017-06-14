@@ -53,13 +53,17 @@ module.exports = () => {
                     }
                 }))
                 .pipe(rename(fPath=>{
-                    if(!tars.config.prefixComponentSprite) return fPath;
+                    if(!tars.config.prefixGlobalSprite) return fPath;
 
-                    if(fPath.dirname === '.') return fPath;
-                    
-                    fPath.basename = tars.config.prefixComponentSprite + fPath.basename;
-                    fPath.dirname = '.';                    
-                    return fPath;
+                    if(fPath.dirname === '.') {
+                        fPath.basename = tars.config.prefixGlobalSprite + fPath.basename;
+                        return fPath;
+                    }
+
+                    if(fPath.dirname !== '.') {
+                        fPath.dirname = '.';
+                        return fPath;
+                    }
                 }))
                 .pipe(
                     tars.require('gulp.spritesmith')(

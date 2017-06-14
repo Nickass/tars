@@ -35,14 +35,17 @@ module.exports = () => {
                 )
                 .pipe(tars.require('gulp-svg2png')())
                 .pipe(rename(fPath=>{
-                    if(!tars.config.prefixComponentSprite) return fPath;
+                    if(!tars.config.prefixGlobalSprite) return fPath;
 
-                    if(fPath.dirname === '.') return fPath;
-                    
-                    fPath.basename = tars.config.prefixComponentSprite + fPath.basename;
-                    fPath.dirname = '.';
+                    if(fPath.dirname === '.') {
+                        fPath.basename = tars.config.prefixGlobalSprite + fPath.basename;
+                        return fPath;
+                    }
 
-                    return fPath;
+                    if(fPath.dirname !== '.') {
+                        fPath.dirname = '.';
+                        return fPath;
+                    }
                 }))
                 .pipe(gulp.dest(`./dev/${imagesPath}/rastered-svg-images`))
                 .pipe(

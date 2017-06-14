@@ -7,7 +7,7 @@
     "browserSync": {
         "startPath": "/index.html",
         "server": {
-            "baseDir": "./dev"
+            "baseDir": ["./", "./dev"]
         },
         "port": 3004,
         "open": true,
